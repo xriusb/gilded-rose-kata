@@ -2,6 +2,10 @@ package com.gildedrose;
 
 import static org.junit.Assert.*;
 
+import com.gildedrose.item.AgedBrie;
+import com.gildedrose.item.BackstagePasses;
+import com.gildedrose.item.Item;
+import com.gildedrose.item.Sulfuras;
 import org.junit.Test;
 
 public class GildedRoseTest {
@@ -46,7 +50,7 @@ public class GildedRoseTest {
 
     @Test
     public void agedBrieIncreasesInQualityTheOlderItGets() {
-        Item[] items = new Item[] { new Item(AGED_BRIE, 5, 5) };
+        Item[] items = new Item[] { new AgedBrie(5, 5) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -57,7 +61,7 @@ public class GildedRoseTest {
 
     @Test
     public void itemQualityNeverBiggerThan50() {
-        Item[] items = new Item[] { new Item(AGED_BRIE, 5, 50) };
+        Item[] items = new Item[] { new AgedBrie( 5, 50) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -67,7 +71,7 @@ public class GildedRoseTest {
 
     @Test
     public void sulfurasQualityIsAlwaysEightyAndNeverDecrease() {
-        Item[] items = new Item[] { new Item(SULFURAS, 5, 80) };
+        Item[] items = new Item[] { new Sulfuras( 5) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -78,7 +82,7 @@ public class GildedRoseTest {
 
     @Test
     public void backStagePassesQualityIncreaseByOne_whenMoreThanTenDaysToExpire() {
-        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 15, BACK_STAGE_INITIAL_TEST_QUALITY) };
+        Item[] items = new Item[] { new BackstagePasses( 15, BACK_STAGE_INITIAL_TEST_QUALITY) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -88,7 +92,7 @@ public class GildedRoseTest {
 
     @Test
     public void backStagePassesQualityIncreaseByTwo_whenExpiresBetweenTenAndFive() {
-        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 7, BACK_STAGE_INITIAL_TEST_QUALITY) };
+        Item[] items = new Item[] { new BackstagePasses( 7, BACK_STAGE_INITIAL_TEST_QUALITY) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -99,7 +103,7 @@ public class GildedRoseTest {
 
     @Test
     public void backStagePassesQualityIncreaseByThree_whenExpiresFiveOrLess() {
-        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 5, BACK_STAGE_INITIAL_TEST_QUALITY) };
+        Item[] items = new Item[] { new BackstagePasses( 5, BACK_STAGE_INITIAL_TEST_QUALITY) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -109,7 +113,7 @@ public class GildedRoseTest {
 
     @Test
     public void backStagePassesIsZero_whenConcertIsDone() {
-        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, -1, BACK_STAGE_INITIAL_TEST_QUALITY) };
+        Item[] items = new Item[] { new BackstagePasses( -1, BACK_STAGE_INITIAL_TEST_QUALITY) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
