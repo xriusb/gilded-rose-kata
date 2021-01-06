@@ -7,4 +7,21 @@ public class BackstagePasses extends Item {
     public BackstagePasses(int sellIn, int quality) {
         super(BACKSTAGE_PASSES, sellIn, quality);
     }
+
+    @Override
+    public void updateQuality() {
+        if (quality < 50) {
+            quality++;
+
+            if (sellIn < 11) {
+                quality++;
+            }
+            if (sellIn < 6) {
+                quality++;
+            }
+        }
+        if (sellIn < 0) {
+            quality = 0;
+        }
+    }
 }
