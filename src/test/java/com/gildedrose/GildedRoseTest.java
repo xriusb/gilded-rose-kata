@@ -11,6 +11,7 @@ public class GildedRoseTest {
     private static final String AGED_BRIE = "Aged Brie";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String CONJURED = "Conjured";
     private static final int BACK_STAGE_INITIAL_TEST_QUALITY = 5;
 
     Store store;
@@ -134,5 +135,16 @@ public class GildedRoseTest {
         Item result = store.items.iterator().next();
 
         assertEquals(0, result.quality);
+    }
+
+    @Test
+    public void aConjuredItemDegradesQualityTwiceFast() {
+        store.addItem("foo" + CONJURED, 5, 5);
+
+        store.updateQuality();
+
+        Item result = store.items.iterator().next();
+
+        assertEquals(3, result.quality);
     }
 }

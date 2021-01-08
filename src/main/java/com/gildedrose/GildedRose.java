@@ -10,23 +10,31 @@ import static com.gildedrose.item.Sulfuras.SULFURAS;
 
 class GildedRose extends Store {
 
+    private static final String CONJURED = "Conjured";
+
     public GildedRose() {
         items = new ArrayList<>();
     }
 
     @Override
     Item createItem(String name, int sellIn, int quality) {
+        Item item;
         if (AGED_BRIE.equals(name)) {
-            return new AgedBrie(sellIn, quality);
+            item = new AgedBrie(sellIn, quality);
         }
         else if (SULFURAS.equals(name)) {
-            return new Sulfuras(sellIn);
+            item = new Sulfuras(sellIn);
         }
         else if (BACKSTAGE_PASSES.equals(name)) {
-            return new BackstagePasses(sellIn, quality);
+            item =  new BackstagePasses(sellIn, quality);
         }
         else {
-            return new Regular(name, sellIn, quality);
+            item = new Regular(name, sellIn, quality);
         }
+
+        if (name.endsWith(CONJURED)) {
+            item = new Conjured(item);
+        }
+        return item;
     }
 }
