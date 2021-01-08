@@ -5,7 +5,9 @@ public class Sulfuras extends Item {
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     public Sulfuras(int sellIn) {
-        super(SULFURAS, sellIn, 80);
+        this.name = SULFURAS;
+        this.sellIn = sellIn;
+        this.quality = 80;
     }
 
     @Override

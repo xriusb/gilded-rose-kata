@@ -1,6 +1,6 @@
 package com.gildedrose.item;
 
-public class Item {
+public abstract class Item {
 
     public String name;
 
@@ -8,20 +8,7 @@ public class Item {
 
     public int quality;
 
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-    }
-
-    public void updateQuality() {
-        if (quality > 0) {
-            quality--;
-            if (sellIn < 0) {
-                quality--;
-            }
-        }
-    }
+    public abstract void updateQuality();
 
    @Override
    public String toString() {

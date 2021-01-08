@@ -1,9 +1,6 @@
 package com.gildedrose;
 
-import com.gildedrose.item.AgedBrie;
-import com.gildedrose.item.BackstagePasses;
-import com.gildedrose.item.Item;
-import com.gildedrose.item.Sulfuras;
+import com.gildedrose.item.*;
 
 import java.util.ArrayList;
 
@@ -29,7 +26,7 @@ class GildedRose extends Store {
             return new BackstagePasses(sellIn, quality);
         }
         else {
-            return new Item(name, sellIn, quality);
+            return new Regular(name, sellIn, quality);
         }
     }
 }
